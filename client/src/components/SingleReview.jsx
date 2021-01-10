@@ -29,29 +29,28 @@ class SingleReview extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.showMore = this.showMore.bind(this);
-    this.handleReport = this.handleReport.bind(this)
-    this.handlePhotoLightbox = this.handlePhotoLightbox.bind(this)
+    this.handleReport = this.handleReport.bind(this);
+    this.handlePhotoLightbox = this.handlePhotoLightbox.bind(this);
   }
 
   componentDidMount() {
     this.formatDate();
     if(this.state.body.length < 250) {
-      this.setState({readMore: true})
+      this.setState({readMore: true});
     }
   }
 
   showMore() {
-    this.setState({readMore: true})
+    this.setState({readMore: true});
   }
 
   handlePhotoLightbox(photoId) {
-    console.log(photoId)
-    this.setState({lightboxId: photoId})
-    this.setState({photoLightboxTriggered: true})
+    this.setState({lightboxId: photoId});
+    this.setState({photoLightboxTriggered: true});
   }
 
   handleReport() {
-    this.setState({didReport: true})
+    this.setState({didReport: true});
     Parse.reportReview(this.state.reviewId, (result) => {
       console.log(result);
     })
@@ -70,7 +69,7 @@ class SingleReview extends React.Component {
 
   formatDate() { 
     let dateArray = this.state.date.split('-');
-    let newDate = `${dateArray[2]}, ${dateArray[0]}`
+    let newDate = `${dateArray[2]}, ${dateArray[0]}`;
     if(dateArray[1] === '01') {
       newDate = 'January ' + newDate;
     } else if (dateArray[1] === '02') {
@@ -96,16 +95,14 @@ class SingleReview extends React.Component {
     } else {
       newDate = 'December ' + newDate;
     }
-    return this.setState({date: newDate})
+    return this.setState({date: newDate});
   }
  
   render() {
-    let recommend;
+    let recommend, photos;
     if(this.state.recommend === 1) {
       recommend = <span>&#10003; &nbsp; I Recommend This Product</span>
     }
-
-    let photos;
     if(this.state.photos.length === 1) {
       photos = 
         <div>
@@ -158,20 +155,17 @@ class SingleReview extends React.Component {
         </div>
     }
 
-    let response;
+    let response, photoLightbox, reported;
 
     if(this.state.response) {
       response = <Col id='response'><p>Response from seller: {this.state.response}</p></Col>
     }
-
-    let reported;
     if(this.state.didReport) {
       reported = <b>This review has been reported!</b>
     } else {
       reported = <u><a className='report' onClick={this.handleReport}>Report</a></u>
     }
 
-    let photoLightbox;
     if(this.state.photoLightboxTriggered) {
       photoLightbox = <Lightbox mainSrc={this.state.photos[this.state.lightboxId].url} onCloseRequest={() => this.setState({ photoLightboxTriggered: false })}/>
     }
@@ -218,4 +212,4 @@ class SingleReview extends React.Component {
   }
 }
 
-export default SingleReview
+export default SingleReview;

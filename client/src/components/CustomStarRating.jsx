@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import { FaStar } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa';
 
 const CustomStarRating = () => {
   const [rating, setRating] = useState(null);
@@ -36,4 +36,4 @@ const CustomStarRating = () => {
   )
 }
 
-export default CustomStarRating
+export default CustomStarRating;

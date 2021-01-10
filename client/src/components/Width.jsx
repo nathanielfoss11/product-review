@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap'
-import IconProgress from './IconProgress.jsx'
+import { Col, Row } from 'react-bootstrap';
+import IconProgress from './IconProgress.jsx';
 class Width extends React.Component {
   constructor(props) {
     super(props);
@@ -36,4 +36,4 @@ class Width extends React.Component {
   }
 }
 
-export default Width
+export default Width;

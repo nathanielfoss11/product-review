@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import StarRating from './StarRating.jsx'
+import StarRating from './StarRating.jsx';
 
 class LargeRating extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class LargeRating extends React.Component {
     }
     const average = (sum / counter);
     this.setState({averageRating: average.toFixed(1)});
-    ReactDOM.render(<StarRating starDimension={20} rating={average} />, document.getElementById('nf-stars'))
+    ReactDOM.render(<StarRating starDimension={20} rating={average} />, document.getElementById('nf-stars'));
   }
 
   render() {
@@ -43,4 +43,4 @@ class LargeRating extends React.Component {
   }
 }
 
-export default LargeRating
+export default LargeRating;

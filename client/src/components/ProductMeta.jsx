@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import LargeRating from './LargeRating.jsx';
-import StarChart from './StarChart.jsx'
-import Characteristics from './characteristics.jsx'
+import StarChart from './StarChart.jsx';
+import Characteristics from './characteristics.jsx';
 
 class ProductMeta extends React.Component {
   constructor(props) {
@@ -16,19 +16,19 @@ class ProductMeta extends React.Component {
       width: props.meta.width,
       comfort: props.meta.comfort
     }
-    this.getPercentRecommend = this.getPercentRecommend.bind(this)
-    this.getStarReviews = props.getStarReviews.bind(this)
+    this.getPercentRecommend = this.getPercentRecommend.bind(this);
+    this.getStarReviews = props.getStarReviews.bind(this);
   }
 
   componentDidMount() {
-    this.getPercentRecommend()
+    this.getPercentRecommend();
   }
 
   getPercentRecommend () {
     let total = this.state.recommended[0] + this.state.recommended[1];
     let recommended = this.state.recommended[1];
     let percent = (recommended / total * 100).toString().slice(0, 4);
-    this.setState({percRecommended: percent})
+    this.setState({percRecommended: percent});
   }
 
   render() {
@@ -52,4 +52,4 @@ class ProductMeta extends React.Component {
   }
 }
 
-export default ProductMeta
+export default ProductMeta;

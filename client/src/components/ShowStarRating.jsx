@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar } from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa';
 
 class ShowStarRating extends React.Component {
   constructor(props) {
@@ -8,14 +8,14 @@ class ShowStarRating extends React.Component {
       rating: null,
       hover: null,
     }
-    this.handleStarClick = props.handleStarClick.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleStarClick = props.handleStarClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
-    const value = event.target.value
-    this.setState({rating: value})
-    this.handleStarClick(value)
+    const value = event.target.value;
+    this.setState({rating: value});
+    this.handleStarClick(value);
   }
 
   render() {
@@ -50,4 +50,4 @@ class ShowStarRating extends React.Component {
   }
 }
 
-export default ShowStarRating
+export default ShowStarRating;

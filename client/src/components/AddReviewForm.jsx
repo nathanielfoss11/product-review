@@ -57,20 +57,20 @@ class AddReviewForm extends React.Component {
 
     if(name === 'doRecommend' || name === 'fit' || name === 'size' || name === 'width' || name === 'comfort' || name === 'quality' || name === 'length' || name === 'stars') {
       value = Number(value);
-      this.setState({[error]: false})
+      this.setState({[error]: false});
     } else if(name === 'body') {
-      this.setState({bodyChar: value.length})
-      this.setState({bodyError: false})
+      this.setState({bodyChar: value.length});
+      this.setState({bodyError: false});
     } else if (name === 'nickname') {
-      this.setState({nicknameError: false})
+      this.setState({nicknameError: false});
     } else if(name === 'summary') {
-      this.setState({summaryChar: value.length})
-      this.setState({summaryError: false})
+      this.setState({summaryChar: value.length});
+      this.setState({summaryError: false});
     } else if(name === 'email') {
       if(validEmailRegex.test(this.state.email)=== false) {
-        this.setState({emailError: true})
+        this.setState({emailError: true});
       } else {
-        this.setState({emailError: false})
+        this.setState({emailError: false});
       }
     }
     this.setState({
@@ -81,101 +81,100 @@ class AddReviewForm extends React.Component {
   validate(event) {
     event.preventDefault()
     if(this.state.nickname.length === 0) {
-      this.setState({nicknameError: true})
+      this.setState({nicknameError: true});
     } else {
-      this.setState({nicknameError: false})
+      this.setState({nicknameError: false});
     }
 
     if(this.state.email.length === 0) {
-      this.setState({emailError: true})
+      this.setState({emailError: true});
     } else {
-      this.setState({emailError: false})
+      this.setState({emailError: false});
     }
 
     if(this.state.body.length < 50) {
-      this.setState({bodyError: true})
+      this.setState({bodyError: true});
     } else {
-      this.setState({bodyError: false})
+      this.setState({bodyError: false});
     }
 
     if(this.state.stars === 0) {
-      this.setState({starsError: true})
+      this.setState({starsError: true});
     } else {
-      this.setState({starsError: false})
+      this.setState({starsError: false});
     }
 
     if(this.state.quality === 0 && this.state.meta.Quality) {
-      this.setState({qualityError: true})
+      this.setState({qualityError: true});
     } else {
-      this.setState({qualityError: false})
+      this.setState({qualityError: false});
     }
 
     if(this.state.comfort === 0 && this.state.meta.Comfort) {
-      this.setState({comfortError: true})
+      this.setState({comfortError: true});
     } else {
-      this.setState({comfortError: false})
+      this.setState({comfortError: false});
     }
 
     if(this.state.size === 0 && this.state.meta.Size) {
-      this.setState({sizeError: true})
+      this.setState({sizeError: true});
     } else {
-      this.setState({sizeError: false})
+      this.setState({sizeError: false});
     }
 
     if(this.state.length === 0 && this.state.meta.Length) {
-      this.setState({lengthError: true})
+      this.setState({lengthError: true});
     } else {
-      this.setState({lengthError: false})
+      this.setState({lengthError: false});
     }
 
     if(this.state.width === 0 && this.state.meta.Width) {
-      this.setState({widthError: true})
+      this.setState({widthError: true});
     } else {
-      this.setState({widthError: false})
+      this.setState({widthError: false});
     }
 
     if(this.state.fit === 0 && this.state.meta.Fit) {
-      this.setState({fitError: true})
+      this.setState({fitError: true});
     } else {
-      this.setState({fitError: false})
+      this.setState({fitError: false});
     }
 
     if(this.state.stars === 0) {
-      this.setState({starsError: true})
+      this.setState({starsError: true});
     } else {
-      this.setState({starsError: false})
+      this.setState({starsError: false});
     }
 
     if(this.state.doRecommend === null) {
-      this.setState({doRecommendError: true})
+      this.setState({doRecommendError: true});
     } else {
-      this.setState({doRecommendError: false})
+      this.setState({doRecommendError: false});
     }
-    setTimeout(function() {this.handleValidation()}.bind(this), 100)
+    setTimeout(function() {this.handleValidation()}.bind(this), 100);
   }
 
   handleValidation() {
-    console.log(this.state)
     if(this.state.starsError === true || this.state.doRecommendError === true || this.state.nicknameError === true || this.state.bodyError === true || this.state.qualityError === true || this.state.comfortError === true || this.state.sizeError === true || this.state.lengthError === true || this.state.widthError === true || this.state.fitError === true || this.state.emailError === true ) {
-      console.log('error')
+      console.log('error');
     } else {
-      this.handleSubmit()
+      this.handleSubmit();
     }
   }
 
   handleStarClick(stars) {
-    stars=Number(stars)
-    this.setState({stars: stars})
+    stars=Number(stars);
+    this.setState({stars: stars});
     if(stars === 1) {
-      this.setState({starRatingLabel: 'Poor'})
+      this.setState({starRatingLabel: 'Poor'});
     } else if(stars === 2) {
-      this.setState({starRatingLabel: 'Fair'})
+      this.setState({starRatingLabel: 'Fair'});
     } else if(stars === 3) {
-      this.setState({starRatingLabel: 'Average'})
+      this.setState({starRatingLabel: 'Average'});
     } else if(stars === 4) {
-      this.setState({starRatingLabel: 'Good'})
+      this.setState({starRatingLabel: 'Good'});
     } else if(stars === 5) {
-      this.setState({starRatingLabel: 'Great'})
+      this.setState({starRatingLabel: 'Great'});
     }
   }
 
@@ -199,24 +198,24 @@ class AddReviewForm extends React.Component {
     const lengthId = this.state.meta.Length ? this.state.meta.Length.id : null;
     const widthId = this.state.meta.Width ? this.state.meta.Width.id : null;
 
-    let characteristicsObj ={}
+    let characteristicsObj ={};
     if(sizeId) {
-      characteristicsObj[sizeId] = this.state.size
+      characteristicsObj[sizeId] = this.state.size;
     }
     if(comfortId) {
-      characteristicsObj[comfortId] = this.state.comfort
+      characteristicsObj[comfortId] = this.state.comfort;
     }
     if(fitId) {
-      characteristicsObj[fitId] = this.state.fit
+      characteristicsObj[fitId] = this.state.fit;
     }
     if(qualityId) {
-      characteristicsObj[qualityId] = this.state.quality
+      characteristicsObj[qualityId] = this.state.quality;
     }
     if(lengthId) {
-      characteristicsObj[lengthId] = this.state.length
+      characteristicsObj[lengthId] = this.state.length;
     }
     if(widthId) {
-      characteristicsObj[widthId] = this.state.width
+      characteristicsObj[widthId] = this.state.width;
     }
 
     const body = {
@@ -245,23 +244,17 @@ class AddReviewForm extends React.Component {
   }
 
   render() {
-    let reviewSent;
+    let reviewSent, addPhotoButton, photoOne, photoTwo, photoThree, photoFour, photoFive;
     if(this.state.sentReview) {
       reviewSent = <b>Review Was Sent Successfully</b>
     } else {
       reviewSent = <Button id='submitReviewButton' onClick={this.validate}>Post Review</Button>
     }
 
-    let addPhotoButton;
     if(this.state.photos.length < 5) {
       addPhotoButton = <Button id='addPhotoButton' onClick={this.handlePhotos} >Attach</Button>
     }
 
-    let photoOne;
-    let photoTwo;
-    let photoThree;
-    let photoFour;
-    let photoFive;
     if(this.state.photos[0]) {
       photoOne = <Image thumbnail id='imageThumbnail' onClick={this.handlePhotoLightbox} src={this.state.photos[0]} />
     } 
@@ -281,12 +274,7 @@ class AddReviewForm extends React.Component {
     if(this.state.photos[4]) {
       photoFive = <Image thumbnail id='imageThumbnail' onClick={this.handlePhotoLightbox} src={this.state.photos[4]} />
     }
-    let quality;
-    let comfort;
-    let fit;
-    let size;
-    let length;
-    let width;
+    let quality, comfort, fit, size, length, width
 
     if(this.state.meta.Quality) {
       quality = <Form.Group>
@@ -367,18 +355,7 @@ class AddReviewForm extends React.Component {
                 </Form.Group>
     }
 
-    let requirementsHeader;
-    let nicknameError;
-    let emailError;
-    let starsError;
-    let recommendError;
-    let bodyError;
-    let qualityError;
-    let comfortError;
-    let sizeError;
-    let lengthError;
-    let widthError;
-    let fitError;
+    let requirementsHeader, nicknameError, emailError, starsError, recommendError, bodyError, qualityError, comfortError, sizeError, lengthError, widthError, fitError
 
     if(this.state.starsError === true || this.state.doRecommendError === true || this.state.nicknameError === true || this.state.bodyError === true || this.state.qualityError === true || this.state.comfortError === true || this.state.sizeError === true || this.state.lengthError === true || this.state.widthError === true || this.state.fitError === true || this.state.emailError === true ) {
       requirementsHeader = <ul id='errorMessageHeader'>Correct the Following:</ul>
@@ -504,4 +481,4 @@ class AddReviewForm extends React.Component {
   }
 }
 
-export default AddReviewForm
+export default AddReviewForm;

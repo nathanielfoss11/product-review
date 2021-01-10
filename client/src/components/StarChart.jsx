@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 class StarChart extends React.Component {
   constructor(props) {
     super(props);
-    const totalRatings = props.ratings[1] + props.ratings[2] + props.ratings[3]+ props.ratings[4] + props.ratings[5]
+    const totalRatings = props.ratings[1] + props.ratings[2] + props.ratings[3]+ props.ratings[4] + props.ratings[5];
     this.state = {
       allRatings: props.ratings,
       oneStars: ((props.ratings[1] / totalRatings) * 100), 
@@ -24,7 +24,7 @@ class StarChart extends React.Component {
       fourStarHover: false,
       fiveStarHover: false,
     }
-    this.getStarReviews = props.getStarReviews.bind(this)
+    this.getStarReviews = props.getStarReviews.bind(this);
   }
 
   render() {

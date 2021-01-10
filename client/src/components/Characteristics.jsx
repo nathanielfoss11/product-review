@@ -40,4 +40,4 @@ class Characteristics extends React.Component {
   }
 }
 
-export default Characteristics
+export default Characteristics;

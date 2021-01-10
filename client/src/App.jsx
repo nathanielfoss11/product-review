@@ -5,7 +5,7 @@ import Parse from './Parse.js';
 import MainReviewPanel from './components/MainReviewPanel.jsx';
 import ProductMeta from './components/ProductMeta.jsx';
 import AddReviewForm from './components/AddReviewForm.jsx';
-import '../dist/style.css'
+import '../dist/style.css';
 import Search from './components/Search.jsx';
 
 
@@ -42,82 +42,81 @@ class ReviewApp extends React.Component {
 
   componentDidMount() {
     Parse.getAllProductList((productList) => {
-      this.setState({productList: productList[3].name})
+      this.setState({productList: productList[3].name});
     });
     Parse.getProductMeta((meta) => {
-     this.setState({meta: meta})
-     ReactDOM.render(<ProductMeta meta={this.state.meta} getStarReviews={this.starhelper}/>, document.getElementById('productMeta'))
-     this.getRelevantReviews()
+     this.setState({meta: meta});
+     ReactDOM.render(<ProductMeta meta={this.state.meta} getStarReviews={this.starhelper}/>, document.getElementById('productMeta'));
+     this.getRelevantReviews();
     });
 
   }
 
   getRelevantReviews() {
     Parse.getAllList((data) => {
-      this.setState({numberOfReviews: data.results.length})
-      let twoReviews = data.results.splice(0, 2)
-      this.setState({sortName: 'relevance'})
-      this.setState({reviews: data.results})
-      this.setState({reviewsToShow: twoReviews})
-      ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
-      ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} meta={this.state.meta}/>, document.getElementById('reviewPannel'))
+      this.setState({numberOfReviews: data.results.length});
+      let twoReviews = data.results.splice(0, 2);
+      this.setState({sortName: 'relevance'});
+      this.setState({reviews: data.results});
+      this.setState({reviewsToShow: twoReviews});
+      ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
+      ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} meta={this.state.meta}/>, document.getElementById('reviewPannel'));
     });
   }
 
   getNewestReviews() {
     Parse.getAllListNewest((data) => {
-      this.setState({numberOfReviews: data.results.length})
-      let twoReviews = data.results.splice(0, 2)
-      this.setState({sortName: 'newest'})
-      this.setState({reviews: data.results})
-      this.setState({reviewsToShow: twoReviews})
-      ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
-      ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'))
+      this.setState({numberOfReviews: data.results.length});
+      let twoReviews = data.results.splice(0, 2);
+      this.setState({sortName: 'newest'});
+      this.setState({reviews: data.results});
+      this.setState({reviewsToShow: twoReviews});
+      ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
+      ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'));
     });
   }
 
   getHelpfulReviews() {
     Parse.getAllListHelpfulness((data) => {
-      this.setState({numberOfReviews: data.results.length})
-      let twoReviews = data.results.splice(0, 2)
-      this.setState({sortName: 'helpfulness'})
-      this.setState({reviews: data.results})
-      this.setState({reviewsToShow: twoReviews})
-      ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
-      ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'))
+      this.setState({numberOfReviews: data.results.length});
+      let twoReviews = data.results.splice(0, 2);
+      this.setState({sortName: 'helpfulness'});
+      this.setState({reviews: data.results});
+      this.setState({reviewsToShow: twoReviews});
+      ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
+      ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'));
     });
   }
 
   starhelper(stars) {
-    console.log(stars)
     if(this.state[stars]) {
-      this.handleClearFilter(stars)
+      this.handleClearFilter(stars);
     } else {
-      const newStars = this.state.starFilter
-      newStars.push(stars)
-      this.setState({[stars]: true})
-      this.setState({starFilter: newStars})
-      this.getStarReviews()
+      const newStars = this.state.starFilter;
+      newStars.push(stars);
+      this.setState({[stars]: true});
+      this.setState({starFilter: newStars});
+      this.getStarReviews();
     }
   }
 
   getStarReviews() {
-    const array = this.state.starFilter
+    const array = this.state.starFilter;
     if(this.state.sortName === 'relevance') {
       Parse.getAllList((data) => {
         let reviewArray = data.results;
         let result = [];
         reviewArray.map((review) => {
           if(array.indexOf(review.rating) > -1) {
-            result.push(review)
+            result.push(review);
           }
         })
-        this.setState({numberOfReviews: result.length})
-        let twoReviews = result.splice(0, 2)
-        this.setState({reviewsToShow: twoReviews})
-        this.setState({reviews: result})
-        ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
-        ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'))
+        this.setState({numberOfReviews: result.length});
+        let twoReviews = result.splice(0, 2);
+        this.setState({reviewsToShow: twoReviews});
+        this.setState({reviews: result});
+        ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
+        ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'));
       })
     } 
     if(this.state.sortName === 'newest') {
@@ -126,15 +125,15 @@ class ReviewApp extends React.Component {
         let result = [];
         reviewArray.map((review) => {
           if(array.indexOf(review.rating) > -1) {
-            result.push(review)
+            result.push(review);
           }
         })
-        this.setState({numberOfReviews: result.length})
-        let twoReviews = result.splice(0, 2)
-        this.setState({reviewsToShow: twoReviews})
-        this.setState({reviews: result})
-        ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
-        ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'))
+        this.setState({numberOfReviews: result.length});
+        let twoReviews = result.splice(0, 2);
+        this.setState({reviewsToShow: twoReviews});
+        this.setState({reviews: result});
+        ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
+        ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'));
       })
     } 
     if(this.state.sortName === 'helpfulness') {
@@ -143,15 +142,15 @@ class ReviewApp extends React.Component {
         let result = [];
         reviewArray.map((review) => {
           if(array.indexOf(review.rating) > -1) {
-            result.push(review)
+            result.push(review);
           }
         })
-        this.setState({numberOfReviews: result.length})
-        let twoReviews = result.splice(0, 2)
-        this.setState({reviewsToShow: twoReviews})
-        this.setState({reviews: result})
-        ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
-        ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'))
+        this.setState({numberOfReviews: result.length});
+        let twoReviews = result.splice(0, 2);
+        this.setState({reviewsToShow: twoReviews});
+        this.setState({reviews: result});
+        ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
+        ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'));
       })
     }
   }
@@ -160,80 +159,78 @@ class ReviewApp extends React.Component {
   handleMoreReviews() { 
     let moreReviews = this.state.reviews.splice(0, 2);
     if(moreReviews[0] !== undefined) {
-      this.state.reviewsToShow.push(moreReviews[0])
+      this.state.reviewsToShow.push(moreReviews[0]);
     }
     if(moreReviews[1] !== undefined) {
-      this.state.reviewsToShow.push(moreReviews[1])
+      this.state.reviewsToShow.push(moreReviews[1]);
     }
-    this.setState({reviewsToShow: this.state.reviewsToShow})
-    this.setState({reviews: this.state.reviews})
+    this.setState({reviewsToShow: this.state.reviewsToShow});
+    this.setState({reviews: this.state.reviews});
 
-    ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'))
+    ReactDOM.unmountComponentAtNode(document.getElementById('reviewPannel'));
 
-    ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'))
+    ReactDOM.render(<MainReviewPanel reviews={this.state.reviewsToShow} />, document.getElementById('reviewPannel'));
 
-    const element = document.getElementById('reviewPannel')
-    element.scrollTop = element.scrollHeight
+    const element = document.getElementById('reviewPannel');
+    element.scrollTop = element.scrollHeight;
   }
 
   handleAddReview() {
     if(this.state.addReview === 0) {
-      ReactDOM.render(<AddReviewForm meta={this.state.meta} product={this.state.productList}/>, document.getElementById('reviewForm'))
-      this.setState({addReview: 1})
-      document.getElementById('reviewForm').scrollIntoView()
+      ReactDOM.render(<AddReviewForm meta={this.state.meta} product={this.state.productList}/>, document.getElementById('reviewForm'));
+      this.setState({addReview: 1});
+      document.getElementById('reviewForm').scrollIntoView();
     } else {
-      ReactDOM.unmountComponentAtNode(document.getElementById('reviewForm'))
-      this.setState({addReview: 0}) 
+      ReactDOM.unmountComponentAtNode(document.getElementById('reviewForm'));
+      this.setState({addReview: 0});
     }
   }
 
   handleSort(sortedName) {
-    console.log(sortedName)
-    console.log(this.state.starFilter)
     if(sortedName === 'newest') {
-      this.setState({sortName: sortedName})
+      this.setState({sortName: sortedName});
       if(this.state.starFilter.length === 0) {
-        this.getNewestReviews()
+        this.getNewestReviews();
       }
     } else if(sortedName === 'relevance') {
-      this.setState({sortName: sortedName})
+      this.setState({sortName: sortedName});
       if(this.state.starFilter.length === 0) {
-        this.getRelevantReviews()
+        this.getRelevantReviews();
       }
     } else if(sortedName === 'helpfulness') {
-      this.setState({sortName: sortedName})
+      this.setState({sortName: sortedName});
       if(this.state.starFilter.length === 0) {
-        this.getHelpfulReviews()
+        this.getHelpfulReviews();
       }
     }
     if(this.state.starFilter.length > 0) {
-      setTimeout(function() {this.getStarReviews()}.bind(this), 500)
+      setTimeout(function() {this.getStarReviews()}.bind(this), 500);
     }
   }
 
   handleClearFilter(stars) {
     if(stars === undefined) {
       const array = [];
-      this.setState({starFilter: array})
+      this.setState({starFilter: array});
       for (var i = 1; i < 6; i++) {
-        this.setState({[i]: false})
+        this.setState({[i]: false});
       }
-      this.getRelevantReviews()
+      this.getRelevantReviews();
     } else {
-      this.setState({[stars]: false})
+      this.setState({[stars]: false});
       const array = this.state.starFilter;
-      array.splice(array.indexOf(stars), 1)
-      this.setState({starFilter: array})
+      array.splice(array.indexOf(stars), 1);
+      this.setState({starFilter: array});
       if(this.state.starFilter.length > 0) {
-        this.getStarReviews()
+        this.getStarReviews();
       } else {
-        this.getRelevantReviews()
+        this.getRelevantReviews();
       }
     }
   }
 
   handleSearch(query) {
-    console.log(query)
+    console.log(query);
   }
 
   render() {
@@ -262,17 +259,15 @@ class ReviewApp extends React.Component {
       clearOneStar = <a value={1} onClick={() => this.handleClearFilter(1)}><u>1 Star</u> &nbsp;</a>
     }
 
-    let clearAll;
-    let filterTitle;
+    let clearAll, filterTitle, showMoreReviews;
     if(this.state[1] || this.state[2] || this.state[3] || this.state[4] || this.state[5]) {
       clearAll = <a onClick={() => this.handleClearFilter()}>&nbsp;<u>Clear All</u></a>
       filterTitle = <b>Rating Breakdown: &nbsp;</b>
     }
 
-    let numberOfReviews = this.state.numberOfReviews
-    let showMoreReviews;
+    let numberOfReviews = this.state.numberOfReviews;
     if(this.state.reviews.length === 0) {
-      showMoreReviews = ''
+      showMoreReviews = '';
     } else {
       showMoreReviews = <Button id='reviewButton' onClick={this.handleMoreReviews} >MORE REVIEWS </Button>
     } 

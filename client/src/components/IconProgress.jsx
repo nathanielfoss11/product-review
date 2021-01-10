@@ -13,7 +13,7 @@ const IconProgress = (props) => {
     marginLeft: 0,
     marginRight: 0,
     position: 'relative'
-  }
+  };
 
   const markerList = {
     listStyle: 'none',
@@ -24,7 +24,7 @@ const IconProgress = (props) => {
     left: 0,
     height: '100%',
     width: '100%',
-  }                  
+  };          
 
   const marker = {
     position: 'absolute',
@@ -34,7 +34,7 @@ const IconProgress = (props) => {
     backgroundColor: 'white',
     marginLeft: '33%',
     zIndex: 1,
-  }
+  };
 
   const marker2 = {
     position: 'relative',
@@ -44,7 +44,7 @@ const IconProgress = (props) => {
     backgroundColor: 'white',
     marginLeft: '66%',
     zIndex: 1,
-  }
+  };
 
   const progressFillerStyle = {
     verticalAlign: top,
@@ -55,7 +55,7 @@ const IconProgress = (props) => {
     marginTop: 0,
     zIndex: 3,
     position: 'absolute'
-  }
+  };
   
   const icon = {
     fontSize: 25,
@@ -63,7 +63,7 @@ const IconProgress = (props) => {
     marginTop: -12,
     zIndex: 2,
     borderRadius: 0,
-  }
+  };
 
   return (
     <div style={progressContainerStyle}>

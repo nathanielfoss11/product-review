@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap'
-import IconProgress from './IconProgress.jsx'
+import { Col, Row } from 'react-bootstrap';
+import IconProgress from './IconProgress.jsx';
 class Length extends React.Component {
   constructor(props) {
     super(props);
@@ -34,4 +34,4 @@ class Length extends React.Component {
   }
 }
 
-export default Length
+export default Length;

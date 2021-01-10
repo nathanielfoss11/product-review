@@ -5,7 +5,7 @@ const ProgressBar = (props) => {
   const progress = props.value;
   const width = props.width;
   const color = props.color;
-  const margin = props.margin || 0
+  const margin = props.margin || 0;
 
   const progressContainerStyle = {
     height: 10,
@@ -14,14 +14,14 @@ const ProgressBar = (props) => {
     display: 'inline-block',
     marginTop: 15,
     marginLeft: margin,
-  }
+  };
 
   const progressFillerStyle = {
     height: '100%',
     width: `${progress}%`,
     backgroundColor: color,
     borderRadius: 'inherit',
-  }
+  };
  
   return (
     <div style={progressContainerStyle}>

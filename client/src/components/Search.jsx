@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 
 class Search extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       searchInput: ''
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.handleSearch = props.handleSearch.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     let value = event.target.value;
-    this.setState({searchInput: value})
+    this.setState({searchInput: value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.handleSearch(this.state.searchInput)
+    this.handleSearch(this.state.searchInput);
   }
 
  
@@ -32,4 +32,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+export default Search;

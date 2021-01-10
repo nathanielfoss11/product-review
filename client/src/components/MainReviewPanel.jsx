@@ -18,5 +18,5 @@ class MainReviewPanel extends React.Component {
 }
 
 
-export default MainReviewPanel
+export default MainReviewPanel;
 
