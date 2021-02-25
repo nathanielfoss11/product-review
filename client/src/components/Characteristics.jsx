@@ -4,7 +4,7 @@ import Width from './Width.jsx';
 import Comfort from './Comfort.jsx';
 import Quality from './Quality.jsx';
 import Length from './Length.jsx';
-import Fit from './fit.jsx';
+import Fit from './Fit.jsx';
 class Characteristics extends React.Component {
   constructor(props) {
     super(props);
