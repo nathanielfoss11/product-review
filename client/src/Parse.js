@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const Parse = {
-  server: 'http://52.26.193.201:3000/reviews/4',
+  server: 'https://52.26.193.201:3000/reviews/4',
 
   getAllList: function(successCB, errorCB = null) {
     $.ajax({
