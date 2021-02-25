@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-const PORT = 3333;
+const port = process.env.PORT || 3333;
 
 app.use(express.static('../client/dist'));
 
 app.use(express.json());
 
-app.listen(PORT, () => {
-    console.log('Serving up now at '+ JSON.stringify(PORT))
+app.listen(port, () => {
+    console.log('Serving up now at '+ JSON.stringify(port))
 });
